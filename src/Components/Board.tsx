@@ -54,9 +54,7 @@ const Board = ({ name, isActive, index }: BoardInterface) => {
         </svg>
       )}
       <p
-        className={`text-[#828fa3] ${isActive && "text-white"} ${
-          hover && isActive === false && "text-[#585fc7]"
-        } ml-3 `}
+        className={` ${hover && "text-[#585fc7]"} ${isActive && "text-white"}   ml-3 `}
       >
         {name}
       </p>

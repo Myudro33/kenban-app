@@ -7,7 +7,7 @@ const ThemeSwitcher = () => {
   const { theme,settheme } = useContext(StoreContext);
   return (
     <div
-      className={`w-[250px] h-[48px] rounded-md m-auto flex justify-center items-center  ${
+      className={`w-[250px] h-[48px] rounded-md self-center flex justify-center items-center  ${
         theme ? "bodyDark" : "bodyLight"
       }`}
     >
