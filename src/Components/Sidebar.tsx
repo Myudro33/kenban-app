@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../context/storeContext";
-import logoDark from "../assets/logo-dark.svg";
-import logoLight from "../assets/logo-light.svg";
 import Board from "./Board";
 import NewBoardBut from "./NewBoardBut";
 import ThemeSwitcher from "./ThemeSwitcher";
@@ -17,24 +15,16 @@ interface BoardProps {
 const Sidebar = () => {
   const { store, setstore, theme, settheme, sideBar, setsideBar } =
     useContext(StoreContext);
-
-  console.log(store);
-
   return (
     <>
         <div
-          className={`w-[300px] h-full ${
+          className={`w-[300px]  ${
             theme ? "dark" : "light"
-          } flex flex-col  ${!sideBar&&'-translate-x-[300px]'} `}
+          } flex flex-col  ${!sideBar&&'-translate-x-[300px] w-0'} border-r-2 border-gray-500`}
         >
-          <img
-            className="w-[153px] h-[26px] mx-5 my-8"
-            src={theme ? logoLight : logoDark}
-            alt="logo"
-          />
           <div className="w-full h-[25rem] mt-8 overflow-y-scroll">
             <p className="ml-8 my-4 tracking-widest text-xs font-bold">
-              ALL BOARDS (3)
+              ALL BOARDS ({store.length})
             </p>
             <div className="w-[95%] flex flex-col">
               {store.map((board: BoardProps, index: number) => (

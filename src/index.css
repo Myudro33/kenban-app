@@ -19,9 +19,20 @@
   --color-red-hover: rgb(255 151 152);
 }
 
+.navbarThin {
+  width: calc(100% - 300px);
+}
+.navbarWide{
+   width: calc(100% - 210px);
+}
+.container{
+  width: calc(100% - 300px);
+  height: calc(100% - 96px);
+}
+
 .openSidebar{
   background-color: var(--color-main-purple);
-  transition: 1s;
+  transition: .5s;
 }
 .openSidebar:hover{
   background-color: var(--color-main-purple-hover);
@@ -70,12 +81,12 @@
 .dark {
   color: var(--color-medium-gray);
   background-color: var(--color-dark-gray);
-  transition: 1s;
+  transition: .5s;
 }
 .light {
   background-color: var(--color-light-background);
   color: var(--color-medium-gray);
-  transition: 1s;
+  transition: .5s;
 }
 * {
   margin: 0;
