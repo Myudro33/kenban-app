@@ -18,7 +18,6 @@ const Navbar = () => {
     ];
     setselected(selectedBoard);
   }, [store]);
-  console.log(selected);
   return (
     <div className={`w-full h-[96px] flex ${theme ? "dark" : "light"}`}>
       <div

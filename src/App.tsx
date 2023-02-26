@@ -4,6 +4,7 @@ import { StoreContext } from "./context/storeContext";
 import data from "./data.json";
 import { setActiveBoard } from "./context/storeContext";
 import Navbar from "./Components/Navbar";
+import Container from "./Components/Container";
 
 const initStore = data.boards;
 const bgColor = false;
@@ -54,6 +55,7 @@ function App() {
         <Navbar />
         <div className={`container flex`}>
           <Sidebar />
+          <Container/>  
         </div>
       </StoreContext.Provider>
     </div>

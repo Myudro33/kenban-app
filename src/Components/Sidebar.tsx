@@ -18,7 +18,7 @@ const Sidebar = () => {
   return (
     <>
         <div
-          className={`w-[300px]  ${
+          className={`w-[300px] z-10  ${
             theme ? "dark" : "light"
           } flex flex-col  ${!sideBar&&'-translate-x-[300px] w-0'} border-r-2 border-gray-500`}
         >

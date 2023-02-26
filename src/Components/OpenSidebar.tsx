@@ -9,7 +9,7 @@ const OpenSidebar = () => {
       onClick={() => {
         setsideBar(true);
       }}
-      className={`w-[52px] h-[48px] flex justify-center
+      className={`w-[52px] h-[48px] flex justify-center z-10
        ${sideBar&&'-translate-x-20'}
       items-center openSidebar rounded-r-full absolute bottom-20`}
     >

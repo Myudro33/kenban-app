@@ -19,6 +19,16 @@
   --color-red-hover: rgb(255 151 152);
 }
 
+
+.containerHeight{
+  height: calc(100vh - 96px);
+  overflow: scroll;
+  transition: 1s;
+}
+.containerOpen{
+  width: calc(100% - 300px);
+}
+
 .navbarThin {
   width: calc(100% - 300px);
 }
@@ -26,8 +36,8 @@
    width: calc(100% - 210px);
 }
 .container{
-  width: calc(100% - 300px);
   height: calc(100% - 96px);
+  max-width: 100%;
 }
 
 .openSidebar{
@@ -79,8 +89,8 @@
 }
 
 .dark {
-  color: var(--color-medium-gray);
   background-color: var(--color-dark-gray);
+  color: var(--color-medium-gray);
   transition: .5s;
 }
 .light {
