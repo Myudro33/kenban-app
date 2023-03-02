@@ -13,19 +13,21 @@ const [hover, sethover] = useState(false)
       return count;
     });
     return count;
-  };
+  };  
+  console.log(hover);
+  
   return (
     <div
     onMouseEnter={()=>sethover(true)}
     onMouseLeave={()=>sethover(false)}
       className={`px-4 py-6 ${
         theme ? "dark" : "light"
-      } my-3 rounded-lg shadow-md w-full cursor-pointer `}
+      } my-3 rounded-lg shadow-md w-[300px] cursor-pointer`}
     >
       <h1
-        className={`text-base ${hover&&'text-[#585fc9]'}  ${
-          theme ? "text-[#fff]" : "text-[#000]"
-        } font-semibold  `}
+        className={`text-base 
+        ${hover?'text-[#585fc7]':theme?'text-white':'text-black'} 
+          font-semibold`}
       >
         {task.title}
       </h1>

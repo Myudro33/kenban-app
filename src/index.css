@@ -104,11 +104,6 @@
   box-sizing: border-box;
   font-family: "Plus Jakarta Sans", sans-serif;
 }
-
-::-webkit-scrollbar {
-  display: none;
-}
-
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -177,4 +172,12 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-main-purple);
+  border-radius: 20px;
 }

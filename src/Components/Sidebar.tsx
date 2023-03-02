@@ -20,9 +20,9 @@ const Sidebar = () => {
         <div
           className={`w-[300px] z-10  ${
             theme ? "dark" : "light"
-          } flex flex-col  ${!sideBar&&'-translate-x-[300px] w-0'} border-r-2 border-gray-500`}
+          } flex flex-col  ${!sideBar&&'-translate-x-[300px] w-0'} border-r ${theme?'border-gray-700':''}`}
         >
-          <div className="w-full h-[25rem] mt-8 overflow-y-scroll">
+          <div className="w-full h-[25rem] mt-8">
             <p className="ml-8 my-4 tracking-widest text-xs font-bold">
               ALL BOARDS ({store.length})
             </p>

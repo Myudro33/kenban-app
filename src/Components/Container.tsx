@@ -27,7 +27,7 @@ const Container = () => {
     <div
       className={`${
         sideBar ? "containerOpen" : "w-full"
-      } absolute z-0 right-0 containerHeight p-6 flex`}
+      } absolute z-0 right-0 containerHeight p-6 flex overflow-scroll`}
     >
       {selected &&
         selected[0]?.columns.map((column: any,index:number) => (

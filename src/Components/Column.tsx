@@ -3,7 +3,6 @@ import { StoreContext } from "../context/storeContext";
 import ColumnTask from "./ColumnTask";
 
 const Column = ({ name, tasks, color }: any) => {
-  const { theme } = useContext(StoreContext);
   return (
     <div className="w-[300px] mx-4 flex flex-col">
       <header className="flex items-center mb-6">
@@ -15,8 +14,8 @@ const Column = ({ name, tasks, color }: any) => {
           {name} ({tasks.length})
         </h1>
       </header>
-      {tasks.map((task: any) => (
-       <ColumnTask task={task} />
+      {tasks.map((task: any,index:number) => (
+       <ColumnTask key={index} task={task} />
       ))}
     </div>
   );
