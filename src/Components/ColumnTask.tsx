@@ -14,7 +14,6 @@ const [hover, sethover] = useState(false)
     });
     return count;
   };  
-  console.log(hover);
   
   return (
     <div

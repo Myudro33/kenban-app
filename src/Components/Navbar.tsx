@@ -4,6 +4,8 @@ import logoDark from "../assets/logo-dark.svg";
 import logoLight from "../assets/logo-light.svg";
 import dots from "../assets/icon-vertical-ellipsis.svg";
 import AddNewTask from "./AddNewTask";
+import EditBoard from "./EditBoard";
+import EditBoardModal from "./EditBoardModal";
 interface selectedProps {
   name: string;
   isActive: boolean;
@@ -14,6 +16,8 @@ const Navbar = () => {
   const { theme, sideBar, store } = useContext(StoreContext);
   const [selected, setselected] = useState<any>();
   const [newTask, setnewTask] = useState(false)
+  const [editBoard, seteditBoard] = useState<boolean>(false)
+  const [editBoardModal, seteditBoardModal] = useState<boolean>(false)
   
   useEffect(() => {
     const selectedBoard = [
@@ -21,7 +25,8 @@ const Navbar = () => {
     ];
     setselected(selectedBoard);
   }, [store]);
-  
+    
+    
   return (
     <div className={`w-full h-[96px] flex ${theme ? "dark" : "light"}`}>
       <div
@@ -53,11 +58,17 @@ const Navbar = () => {
           <button onClick={()=>setnewTask(true)} className="w-[162px] h-[47px] font-semibold text-white text-base bg-[#585fc7] rounded-3xl active:scale-95">
             + Add New Task
           </button>
-          <img className="ml-4 cursor-pointer" src={dots} alt="dots" />
+          <img onClick={()=>seteditBoard(prev=>!prev)} className="ml-4 cursor-pointer" src={dots} alt="dots" />
         </div>
       </div>
       {newTask&&(
         <AddNewTask setnewTask={setnewTask} selected={selected} />
+      )}
+      {editBoard&&(
+        <EditBoard seteditBoard={seteditBoard} seteditBoardModal={seteditBoardModal} />
+      )}
+      {editBoardModal&&(
+        <EditBoardModal selected={selected[0]} seteditBoardModal={seteditBoardModal}/>
       )}
     </div>
   );

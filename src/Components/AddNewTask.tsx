@@ -129,7 +129,7 @@ const AddNewTask = ({ selected, setnewTask }: any) => {
             ))}
             <button
               onClick={addNewSubtask}
-              className={`h-[39px] text-[#585fc7] rounded-3xl bg-[#585fc71a] hover:bg-[#585fc749] mt-2 active:scale-95 ${
+              className={`h-[39px] text-[#585fc7] rounded-3xl  ${theme?'bg-white':'bg-[#585fc71a] hover:bg-[#585fc749]'} mt-2 active:scale-95 ${
                 subtasks.length < 7 ? "cursor-pointer" : "cursor-not-allowed"
               }  `}
             >
