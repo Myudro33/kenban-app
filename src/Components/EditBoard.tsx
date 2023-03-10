@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { StoreContext } from "../context/storeContext";
 
-const EditBoard = ({ seteditBoard,seteditBoardModal }: any) => {
+const EditBoard = ({ seteditBoard,seteditBoardModal,setdeleteBoardModal }: any) => {
   const { theme } = useContext(StoreContext);
   const divRef = useRef<any>();
   const editRef = useRef<any>();
@@ -28,6 +28,10 @@ const EditBoard = ({ seteditBoard,seteditBoardModal }: any) => {
     seteditBoard(false)
     seteditBoardModal(true)
   }
+  const deleteBoardHandler = () =>{
+    seteditBoard(false)
+    setdeleteBoardModal(true)
+  }
 
   return (
     <div
@@ -37,7 +41,7 @@ const EditBoard = ({ seteditBoard,seteditBoardModal }: any) => {
       } shadow-lg rounded-md p-4 flex flex-col justify-around z-20`}
     >
       <p onClick={editBoardHandler} ref={editRef} className='cursor-pointer hover:underline  font-semibold   text-sm'>Edit Board</p>
-      <p ref={deleteRef} className='text-red-500 cursor-pointer   font-semibold text-sm hover:underline' >Delete Board</p>
+      <p onClick={deleteBoardHandler} ref={deleteRef} className='text-red-500 cursor-pointer   font-semibold text-sm hover:underline' >Delete Board</p>
     </div>
   );
 };
