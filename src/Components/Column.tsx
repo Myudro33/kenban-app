@@ -4,7 +4,7 @@ import ColumnTask from "./ColumnTask";
 
 const Column = ({ name, tasks, color }: any) => {
   return (
-    <div className="w-[300px] mx-4 flex flex-col">
+    <div className="w-[300px] mx-4 flex flex-col shrink-0">
       <header className="flex items-center mb-6">
         <div
           style={{ backgroundColor: color }}

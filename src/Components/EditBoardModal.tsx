@@ -1,17 +1,52 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { StoreContext } from "../context/storeContext";
 import exitIcon from "../assets/icon-cross.svg";
 
 const EditBoardModal = ({ seteditBoardModal, selected }: any) => {
   const divRef = useRef<any>();
-  const { theme } = useContext(StoreContext);
+  const { theme, store, setstore } = useContext(StoreContext);
 
   const divRefHandler = (event: any) => {
     if (event.target === divRef.current) {
       seteditBoardModal(false);
     }
   };
+  const [values, setvalues] = useState<any>({
+    name: selected?.name,
+    columns: selected?.columns,
+    isActive: true,
+  });
 
+  const updateBoard = () => {
+    const index = store.findIndex((board: any) => board.name === selected.name);
+    if (index !== -1) {
+      const data = [...store];
+      data[index] = values;
+      setstore(data);
+      seteditBoardModal(false);
+    }
+  };
+  const nameChangeHandler = (value: string, index: number) => {
+    const singleValue = { ...values.columns[index], name: value };
+    const updateColumns = { ...values };
+    updateColumns.columns[index] = singleValue;
+    setvalues(updateColumns);
+  };
+
+  const deleteColumn = (name: string) => {
+    setvalues({
+      ...values,
+      columns: values?.columns.filter((item: any) => item.name !== name),
+    });
+  };
+  const addNewSubtask = () => {
+    if (values.columns.length < 6) {
+      setvalues({
+        ...values,
+        columns: [...values.columns, { name: "", tasks: [] }],
+      });
+    }
+  };
   return (
     <div
       onClick={(event) => divRefHandler(event)}
@@ -48,7 +83,9 @@ const EditBoardModal = ({ seteditBoardModal, selected }: any) => {
           <input
             type="text"
             name="name"
-            defaultValue={selected?.name}
+            value={values.name}
+            maxLength={23}
+            onChange={(e) => setvalues({ ...values, name: e.target.value })}
             className={`rounded-md w-full h-[40px] border text-sm ${
               theme
                 ? "border-gray-600 text-white"
@@ -58,38 +95,51 @@ const EditBoardModal = ({ seteditBoardModal, selected }: any) => {
         </label>
         <label className="font-semibold mt-4" htmlFor="columns">
           Columns
-          {selected?.columns.map((column: any, index: any) => (
+          {values?.columns.map((column: any, index: any) => (
             <div
               key={index}
               className="w-full my-4 flex justify-between items-center"
             >
               <input
                 type="text"
-                defaultValue={column.name}
+                value={values.columns[index].name}
+                onChange={(e) => nameChangeHandler(e.target.value, index)}
                 className={`rounded-md w-[93%] h-[40px] border text-sm ${
                   theme
                     ? "border-gray-600 text-white"
                     : "border-gray-200 text-black"
                 } outline-none px-2 placeholder:font-thin bg-transparent`}
               />
-              <img src={exitIcon} className="cursor-pointer" alt="exit icon" />
+              <img
+                src={exitIcon}
+                onClick={() => deleteColumn(column.name)}
+                className="cursor-pointer"
+                alt="exit icon"
+              />
             </div>
           ))}
         </label>
         <button
-          className={`h-[39px] text-sm font-semibold text-[#585fc7] rounded-3xl mt-2 active:scale-95   ${theme?'bg-white':'bg-[#585fc71a] hover:bg-[#585fc749]'}      `}
+          className={`h-[39px] text-sm font-semibold text-[#585fc7] rounded-3xl mt-2 active:scale-95   ${
+            theme ? "bg-white" : "bg-[#585fc71a] hover:bg-[#585fc749]"
+          }  ${values.columns.length === 6 && "cursor-not-allowed"} `}
+          onClick={addNewSubtask}
         >
           + Add New Subtask
         </button>
 
         <div className="flex justify-between w-full mt-6">
           <button
+            onClick={updateBoard}
             className={`w-[200px] h-[39px] bg-[#585fc7] hover:bg-[#585fc7a9] text-white font-semibold rounded-3xl active:scale-95     `}
           >
             Save Changes
           </button>
           <button
-            className={`w-[200px] h-[39px] font-semibold rounded-3xl text-[#585fc7]  ${theme?'bg-white':'bg-[#585fc71a] hover:bg-[#585fc749]'} active:scale-95`}
+            className={`w-[200px] h-[39px] font-semibold rounded-3xl text-[#585fc7]  ${
+              theme ? "bg-white" : "bg-[#585fc71a] hover:bg-[#585fc749]"
+            } active:scale-95`}
+            onClick={() => seteditBoardModal(false)}
           >
             Cancel
           </button>
