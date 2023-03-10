@@ -14,11 +14,10 @@ interface selectedProps {
 }
 
 const Navbar = () => {
-  const { theme, sideBar, store } = useContext(StoreContext);
+  const { theme, sideBar, store,editBoardModal,seteditBoardModal } = useContext(StoreContext);
   const [selected, setselected] = useState<any>();
   const [newTask, setnewTask] = useState(false);
   const [editBoard, seteditBoard] = useState<boolean>(false);
-  const [editBoardModal, seteditBoardModal] = useState<boolean>(false);
   const [deleteBoardModal, setdeleteBoardModal] = useState<boolean>(false);
 
   useEffect(() => {

@@ -25,6 +25,7 @@ function App() {
   const [store, setstore] = useState<typeof data>(getInitialState);
   const [theme, settheme] = useState(getInitialTheme);
   const [sideBar, setsideBar] = useState(getInitialSideBar);
+  const [editBoardModal, seteditBoardModal] = useState<boolean>(false);
   useEffect(() => {
     localStorage.setItem("store", JSON.stringify(store));
   }, [store]);
@@ -50,6 +51,8 @@ function App() {
           setActiveBoard,
           sideBar,
           setsideBar,
+          editBoardModal,
+          seteditBoardModal
         }}
       >
         <Navbar />
