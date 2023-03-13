@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StoreContext } from "../context/storeContext";
 import Board from "./Board";
 import NewBoardBut from "./NewBoardBut";
 import ThemeSwitcher from "./ThemeSwitcher";
 import HideSidebar from "./HideSidebar";
 import OpenSidebar from "./OpenSidebar";
+import CreateNewBoard from "./CreateNewBoard";
 
 interface BoardProps {
   name: string;
@@ -15,6 +16,8 @@ interface BoardProps {
 const Sidebar = () => {
   const { store, setstore, theme, settheme, sideBar, setsideBar } =
     useContext(StoreContext);
+    const [newBoardModal, setnewBoardModal] = useState(false)
+    
   return (
     <>
         <div
@@ -35,13 +38,16 @@ const Sidebar = () => {
                   index={index}
                 />
               ))}
-              <NewBoardBut />
+              <NewBoardBut setnewBoardModal={setnewBoardModal} />
             </div>
           </div>
           <ThemeSwitcher />
           <HideSidebar />
+          {newBoardModal&&(
+            <CreateNewBoard setnewBoardModal={setnewBoardModal} />
+           )}
         </div>
-           <OpenSidebar />
+           <OpenSidebar  />
     </>
   );
 };

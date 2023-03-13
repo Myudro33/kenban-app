@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../context/storeContext";
 
-const NewBoardBut = () => {
+const NewBoardBut = ({setnewBoardModal}:any) => {
   const { theme } = useContext(StoreContext);
   return (
     <div
+    onClick={()=>setnewBoardModal(true)}
       className={`w-full h-[47px] pl-8 rounded-r-full flex items-center font-bold
      ${theme ? "addNewBoardDark" : "addNewBoardLight"} text-[#585fc7] `}
     >

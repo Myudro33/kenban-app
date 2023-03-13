@@ -10,7 +10,7 @@ const Column = ({ name, tasks, color }: any) => {
           style={{ backgroundColor: color }}
           className={`w-4 h-4 rounded-full`}
         ></div>
-        <h1 className="ml-2 text-[#828fa3] font-semibold">
+        <h1 className="ml-2 text-[#828fa3] font-semibold uppercase">
           {name} ({tasks.length})
         </h1>
       </header>
