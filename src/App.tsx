@@ -26,6 +26,9 @@ function App() {
   const [theme, settheme] = useState(getInitialTheme);
   const [sideBar, setsideBar] = useState(getInitialSideBar);
   const [editBoardModal, seteditBoardModal] = useState<boolean>(false);
+  const [taskModal, settaskModal] = useState(false);
+  const [taskInfo, settaskInfo] = useState({});
+  const [selected, setselected] = useState<any>();
   useEffect(() => {
     localStorage.setItem("store", JSON.stringify(store));
   }, [store]);
@@ -35,6 +38,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("sidebar", JSON.stringify(sideBar));
   }, [sideBar]);
+
   return (
     <div
       className={`w-full h-screen flex flex-col ${
@@ -52,13 +56,19 @@ function App() {
           sideBar,
           setsideBar,
           editBoardModal,
-          seteditBoardModal
+          seteditBoardModal,
+          taskModal,
+          settaskModal,
+          taskInfo,
+          settaskInfo,
+          selected,
+          setselected,
         }}
       >
         <Navbar />
         <div className={`container flex`}>
           <Sidebar />
-          <Container/>  
+          <Container />
         </div>
       </StoreContext.Provider>
     </div>

@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import { StoreContext } from "../context/storeContext";
+import TaskModal from "./TaskModal";
 
 const ColumnTask = ({ task }: any) => {
 const [hover, sethover] = useState(false)
-  const { theme } = useContext(StoreContext);
+  const { theme,taskModal,settaskModal,taskInfo, settaskInfo } = useContext(StoreContext);
   const countCompletedSubtasks = (subtasks: any) => {
     let count = 0;
     subtasks.map((task: any) => {
@@ -14,11 +15,16 @@ const [hover, sethover] = useState(false)
     });
     return count;
   };  
-  
+
+  const clickHandler = ()=>{
+    settaskModal(true)
+    settaskInfo(task)
+  }
   return (
     <div
     onMouseEnter={()=>sethover(true)}
     onMouseLeave={()=>sethover(false)}
+    onClick={clickHandler}
       className={`px-4 py-6 ${
         theme ? "dark" : "light"
       } my-3 rounded-lg shadow-md w-[300px] cursor-pointer`}

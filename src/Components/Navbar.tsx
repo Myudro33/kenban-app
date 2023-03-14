@@ -7,6 +7,7 @@ import AddNewTask from "./AddNewTask";
 import EditBoard from "./EditBoard";
 import EditBoardModal from "./EditBoardModal";
 import DeleteBoardModal from "./DeleteBoardModal";
+import TaskModal from "./TaskModal";
 interface selectedProps {
   name: string;
   isActive: boolean;
@@ -14,7 +15,7 @@ interface selectedProps {
 }
 
 const Navbar = () => {
-  const { theme, sideBar, store,editBoardModal,seteditBoardModal } = useContext(StoreContext);
+  const { theme, sideBar, store,editBoardModal,seteditBoardModal,taskModal,settaskModal } = useContext(StoreContext);
   const [selected, setselected] = useState<any>();
   const [newTask, setnewTask] = useState(false);
   const [editBoard, seteditBoard] = useState<boolean>(false);
@@ -87,6 +88,9 @@ const Navbar = () => {
       )}
       {deleteBoardModal && (
         <DeleteBoardModal setdeleteBoardModal={setdeleteBoardModal} />
+      )}
+      {taskModal&&(
+        <TaskModal/>
       )}
     </div>
   );

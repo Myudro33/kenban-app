@@ -4,8 +4,8 @@ import AddNewColumn from "./AddNewColumn";
 import Column from "./Column";
 
 const Container = () => {
-  const [selected, setselected] = useState<any>();
-  const { sideBar, store } = useContext(StoreContext);
+  
+  const { sideBar, store,selected, setselected } = useContext(StoreContext);
 
   const colors = [
     "#49c4e5",
