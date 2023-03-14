@@ -5,7 +5,7 @@ import exitIcon from "../assets/icon-cross.svg";
 const AddNewTask = ({ selected, setnewTask }: any) => {
   const { theme, store, setstore } = useContext(StoreContext);
   const divRef = useRef<any>();
-  const [subtasks, setsubtasks] = useState([{ id: 0, value: "" }]);
+  const [subtasks, setsubtasks] = useState([{ id: 0, title: "",isCompleted:false }]);
   const [title, settitle] = useState<string>("");
   const [description, setdescription] = useState<string>("");
   const [status, setstatus] = useState<string>(selected[0]?.columns[0].name);
@@ -13,7 +13,7 @@ const AddNewTask = ({ selected, setnewTask }: any) => {
     setsubtasks(
       subtasks.map((item, i) => {
         if (item.id === index) {
-          return { ...item, value: value };
+          return { ...item, title: value };
         }
         return item;
       })
@@ -24,7 +24,7 @@ const AddNewTask = ({ selected, setnewTask }: any) => {
   };
   const addNewSubtask = () => {
     if (subtasks.length < 7) {
-      setsubtasks([...subtasks, { id: Math.random(), value: "" }]);
+      setsubtasks([...subtasks, { id: Math.random(), title: "",isCompleted:false }]);
     }
   };
   const divRefHandler = (event: any) => {
@@ -52,6 +52,7 @@ const AddNewTask = ({ selected, setnewTask }: any) => {
     setstore(newStore)
     setnewTask(false)
   };
+console.log(newTask);
 
   return (
     <div
@@ -114,7 +115,7 @@ const AddNewTask = ({ selected, setnewTask }: any) => {
               >
                 <input
                   type="text"
-                  value={subtasks[task.id]?.value}
+                  value={subtasks[task.id]?.title}
                   onChange={(e) => subtaskValue(task.id, e.target.value)}
                   className={`rounded-md w-[90%] h-[40px] border ${theme?'border-gray-600':'border-gray-200'} outline-none px-2 placeholder:font-thin bg-transparent`}
                   placeholder="e.g make a coffee"
